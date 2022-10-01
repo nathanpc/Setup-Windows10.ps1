@@ -10,3 +10,5 @@ If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 
 Write-Host "Enabling SMB 1.0 protocol..."
 Set-SmbServerConfiguration -EnableSMB1Protocol $true -Force
+
+Read-Host -Prompt "Press Enter to exit"

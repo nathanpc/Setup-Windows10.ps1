@@ -62,10 +62,8 @@ Write-Host "Disabling Search Box/Button..."
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "SearchboxTaskbarMode" -Type DWord -Value 0
 
 # Show all taskbar icons.
-If (Confirm-WithUser "Always show all icons in the system tray?") {
-    Write-Host "Showing all icons in the system tray..."
-    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "EnableAutoTray" -Type DWord -Value 0
-}
+Write-Host "Showing all icons in the system tray..."
+Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "EnableAutoTray" -Type DWord -Value 0
 
 # Change default Explorer view to This PC.
 Write-Host "Changing default Explorer view to This PC..."
@@ -84,8 +82,8 @@ Write-Host "Enabling F8 boot menu options..."
 bcdedit /set `{current`} bootmenupolicy Legacy | Out-Null
     
 # Disable UAC prompts.
-If (Confirm-DisableWithUser "UAC prompts") {
-    Write-Host "Disabling UAC prompts..."
-    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Type DWord -Value 0
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "PromptOnSecureDesktop" -Type DWord -Value 0
-}
+Write-Host "Disabling UAC prompts..."
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Type DWord -Value 0
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "PromptOnSecureDesktop" -Type DWord -Value 0
+
+Read-Host -Prompt "Press Enter to exit"
